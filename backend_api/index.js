@@ -1,18 +1,23 @@
 const connectToMongo = require('./db')
 const express = require('express')
-const port=3000
+const port1=5001
 const app=express()
+app.use(express.json()); // middleware
+var cors = require('cors')
+//var app = express()
 
-//available Routes
-app.get('/api/auth',require('./routes/auth'))
-//app.get('/api/notes',require('./routes/notes'))
+app.use(cors())
+
+app.use('/api/auth/',require('./routes/auth'))
+
+app.use('/api/notes',require('./routes/notes'))
 
 
-app.listen(port,
+app.listen(port1,
     () => {
-        console.log(`Example app listening on port http://localhost:${port}`)
+        console.log(`iNotebook Backend app listening on port http://localhost:${port1}`)
       })
 connectToMongo()
 
-console.log("maza agy gya bad me")
+console.log("maza agy gya")
 
